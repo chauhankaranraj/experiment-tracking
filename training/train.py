@@ -4,7 +4,8 @@ import pprint
 import mlflow
 
 import dask.array as da
-from dask.metrics import log_loss
+from dask.distributed import Client
+from dask_ml.metrics import log_loss
 
 from joblib import parallel_backend
 
@@ -48,6 +49,9 @@ def train(params):
     for k,v in params.items():
         mlflow.log_param(k, v)
 
+    # dask cliuent
+    client = Client()
+
     with parallel_backend('dask'):
         # load the preprocessed data
         # THIS ASSUME PREPROCESSING HAS BEEN DONE AND RESULT IS SAVED SOMEWHERE
@@ -66,7 +70,8 @@ def train(params):
         Y_pred_proba = rgf_clf.predict_proba(X_test)
 
         # log logistic loss value
-        mlflow.log_metric('log_loss', log_loss(Y_test, Y_pred_proba))
+        logistic_loss = log_loss(Y_test, Y_pred_proba)
+        mlflow.log_metric('log_loss', logistic_loss)
 
     # log precision, recall, f1
     p, r, f, _ = precision_recall_fscore_support(y_true=Y_test, y_pred=Y_pred, average='binary')

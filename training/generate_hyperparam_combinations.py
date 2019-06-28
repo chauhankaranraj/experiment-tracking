@@ -7,11 +7,11 @@ if __name__ == "__main__":
     OUT_FNAME = "hyperparameters.yml"
 
     # hyperparameters to tune
-    hyperparams = {
-        'ones': [6, 1, 9],
-        'tens': [4, 7],
-        'hundreds': [3, 5],
-    }
+    hyperparams = {'max_leaf': [5000, 10000],
+                    'loss': ['Log'],
+                    'l2': [1e-10, 1e-8],
+                    'learning_rate': [5e-3, 5e-2],
+                    'verbose': [True]}
 
     # generate a list of dicts with specific values for each parameter
     keys, values = zip(*hyperparams.items())

@@ -1,48 +1,48 @@
 - hyperparam_set:
-    hundreds: 3
-    ones: 6
-    tens: 4
+    l2: 1.0e-10
+    learning_rate: 0.005
+    loss: Log
+    max_leaf: 5000
+    verbose: true
 - hyperparam_set:
-    hundreds: 5
-    ones: 6
-    tens: 4
+    l2: 1.0e-10
+    learning_rate: 0.05
+    loss: Log
+    max_leaf: 5000
+    verbose: true
 - hyperparam_set:
-    hundreds: 3
-    ones: 6
-    tens: 7
+    l2: 1.0e-08
+    learning_rate: 0.005
+    loss: Log
+    max_leaf: 5000
+    verbose: true
 - hyperparam_set:
-    hundreds: 5
-    ones: 6
-    tens: 7
+    l2: 1.0e-08
+    learning_rate: 0.05
+    loss: Log
+    max_leaf: 5000
+    verbose: true
 - hyperparam_set:
-    hundreds: 3
-    ones: 1
-    tens: 4
+    l2: 1.0e-10
+    learning_rate: 0.005
+    loss: Log
+    max_leaf: 10000
+    verbose: true
 - hyperparam_set:
-    hundreds: 5
-    ones: 1
-    tens: 4
+    l2: 1.0e-10
+    learning_rate: 0.05
+    loss: Log
+    max_leaf: 10000
+    verbose: true
 - hyperparam_set:
-    hundreds: 3
-    ones: 1
-    tens: 7
+    l2: 1.0e-08
+    learning_rate: 0.005
+    loss: Log
+    max_leaf: 10000
+    verbose: true
 - hyperparam_set:
-    hundreds: 5
-    ones: 1
-    tens: 7
-- hyperparam_set:
-    hundreds: 3
-    ones: 9
-    tens: 4
-- hyperparam_set:
-    hundreds: 5
-    ones: 9
-    tens: 4
-- hyperparam_set:
-    hundreds: 3
-    ones: 9
-    tens: 7
-- hyperparam_set:
-    hundreds: 5
-    ones: 9
-    tens: 7
+    l2: 1.0e-08
+    learning_rate: 0.05
+    loss: Log
+    max_leaf: 10000
+    verbose: true
