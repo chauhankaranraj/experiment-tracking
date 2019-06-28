@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # TODO: remove this hardcoding
-NUM_JOBS=12
+NUM_JOBS=8
 
 # spawn jobs for each set
 # NOTE: since this will be used as in index into an array, it needs to be 0..N-1
