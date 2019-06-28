@@ -24,6 +24,10 @@ def get_hyperparameters(job_id, hyperparams_fname="hyperparameters.yml"):
     pprint.pprint(hyperparam_set[job_id]["hyperparam_set"])
     print("------------------------------------\n")
 
+    print(type(hyperparam_set))
+    print(type(hyperparam_set[job_id]))
+    print(type(hyperparam_set[job_id]["hyperparam_set"]))
+
     return hyperparam_set[job_id]["hyperparam_set"]
 
 
