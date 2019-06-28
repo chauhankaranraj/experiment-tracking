@@ -86,6 +86,9 @@ if __name__ == "__main__":
     if job_id is None:
         raise EnvironmentError("Could not find variable HYPERPARAM_SET_ID in environment. It must be defined for job to run")
 
+    # openshift pods complaint this being not a number
+    job_id = int(job_id)
+
     # get hyperparameters for this specific job
     currjob_hyperparams = get_hyperparameters(job_id)
 
