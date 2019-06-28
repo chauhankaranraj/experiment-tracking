@@ -13,7 +13,7 @@ parameters:
   required: true
   description: Application name
 - name: GIT_URI
-  value: https://github.com/chauhankaranraj/experiment-tracking.git
+  value: https://github.com/chauhankaranraj/training.git
   required: true
 - name: APP_FILE
   value: train.py
@@ -59,7 +59,6 @@ objects:
       git:
         uri: ${GIT_URI}
       type: Git
-      contextDir: training
     strategy:
       type: Source
       sourceStrategy:
