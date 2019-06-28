@@ -6,6 +6,14 @@ name = "pypi"
 [packages]
 pyyaml = "*"
 mlflow = "*"
+numpy = "*"
+scipy = "*"
+joblib = "*"
+scikit-learn = "*"
+rgf-python = "*"
+toolz = "*"
+dask = "*"
+dask_ml = "*"
 
 [dev-packages]
 
