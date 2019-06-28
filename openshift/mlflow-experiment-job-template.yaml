@@ -8,32 +8,42 @@ metadata:
   name: mlflow-experiment-job
 
 parameters:
-- description: Application name
+- name: APPLICATION_NAME
   from: "experiment-run-[a-z0-9]{4}"
   generate: expression
-  name: APPLICATION_NAME
   required: true
+  description: Application name
 - name: MLFLOW_TRACKING_URI
   value: http://$(MLFLOW_SERVER_SERVICE_SERVICE_HOST):$(MLFLOW_SERVER_SERVICE_SERVICE_PORT)
   required: true
   # To use the internal host and port number to connect to the mlflow tracking server
   description: "URI to the MLFlow server. Only required if the MLFlow server is in another Namespace"
 - name: APP_IMAGE_URI
-  description: "Name of the application image to be pulled from the registry"
   value: "mlflow-experiment-image"
   required: true
+  description: "Name of the application image to be pulled from the registry"
 - name: APP_IMAGE_TAG
-  value: "latest"
   required: true
+  value: "latest"
+- name: HYPERPARAM_SET_ID
+  required: true
+  description: ID of current job. This will be used to index into the list of hyperparameter-sets and get one "instantiation" of hyperparams
+- name: REQUEST_CPU
+  value: "2"
+  required: false
+  description: "Request number of CPUs allocated to the job"
+- name: REQUEST_MEM
+  value: "4Gi"
+  required: false
+  description: "Request amount of memory allocated to the job"
 - name: LIMIT_CPU
-  value: "1"
+  value: "4"
+  required: false
   description: "Limit number of CPUs allocated to the job"
-  required: false
 - name: LIMIT_MEM
-  value: "2G"
-  description: "Limit amount of memory allocated to the job"
+  value: "8Gi"
   required: false
-
+  description: "Limit amount of memory allocated to the job"
 
 objects:
 - apiVersion: batch/v1
@@ -54,7 +64,8 @@ objects:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: 500Mi
+              memory: ${REQUEST_MEM}
+              cpu: ${REQUEST_CPU}
             limits:
               memory: ${LIMIT_MEM}
               cpu: ${LIMIT_CPU}
@@ -63,4 +74,6 @@ objects:
             value: ${MLFLOW_TRACKING_URI}
           - name: MLFLOW_EXPERIMENT_NAME
             value: ${APP_IMAGE_URI}
+          - name: HYPERPARAM_SET_ID
+            value: ${HYPERPARAM_SET_ID}
         restartPolicy: Never
