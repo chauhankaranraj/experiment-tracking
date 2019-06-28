@@ -29,7 +29,7 @@ parameters:
   required: true
   description: ID of current job. This will be used to index into the list of hyperparameter-sets and get one "instantiation" of hyperparams
 - name: REQUEST_CPU
-  value: "2"
+  value: "1"
   required: false
   description: "Request number of CPUs allocated to the job"
 - name: REQUEST_MEM
@@ -37,7 +37,7 @@ parameters:
   required: false
   description: "Request amount of memory allocated to the job"
 - name: LIMIT_CPU
-  value: "4"
+  value: "2"
   required: false
   description: "Limit number of CPUs allocated to the job"
 - name: LIMIT_MEM
